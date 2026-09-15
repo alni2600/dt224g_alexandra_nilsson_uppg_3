@@ -14,53 +14,28 @@
 <body>
 
 <header>    
-    <!-- Header och navigation
-•	logotyp
-•	webbplatsnamnet Norrgläntan
-•	navigation med länkarna:
-o	Upptäck
-o	Aktiviteter
-o	Boende
-o	Hitta hit   
-På mobil ska navigationen visas vertikalt. På större skärm ska den kunna visas horisontellt.
-Notera: Eftersom du enbart bygger startsidan behöver du inte skapa övriga undersidor. I a-taggen kan du länka till "#". Till exempel: <a href="#">Upptäck</a> -->
+    <!-- På mobil ska navigationen visas vertikalt. På större skärm ska den kunna visas horisontellt. -->
     
-    <!-- Om det hade varit flera sidor "på riktigt" hade denna funktion ju varit lite mer användbar att ha :) -->
-    <a href="index.html">
-        <img src="images/logotyp_svart.png" alt="">
-        <h3 class="logo-text">NORRGLÄNTAN</h3>
-    </a>
-    <nav>
-        <ul>
-            <li><a href="#">Upptäck</a></li>
-            <li><a href="#">Aktiviteter</a></li>
-            <li><a href="#">Boende</a></li>
-            <li><a href="#">Hitta hit</a></li>
-        </ul>
-    </nav>
+    <div class="header-container"> 
+        <div class="logo-logotext">
+            <img src="images/logotyp_svart.png" alt="logotyp">
+            <h3 class="logo-text">NORRGLÄNTAN</h3>
+        </div>
+
+        <nav>
+            <ul class="nav-ul">
+                <li><a href="#">Upptäck</a></li>
+                <li><a href="#">Aktiviteter</a></li>
+                <li><a href="#">Boende</a></li>
+                <li><a href="#">Hitta hit</a></li>
+            </ul>
+        </nav>
+    </div>
 
 </header>
 
 <main>
-<!-- Hero
-•	en stor hero-bild
-•	rubrik
-•	kort ingress
-•	en knapp eller länk, till exempel Upptäck Norrgläntan
-Introduktion
-•	en rubrik
-•	minst ett stycke text om Norrgläntan
-Aktivitetssektion
-•	tre sektioner eller kort:
-o	Vandra
-o	Paddla
-o	Upptäck
-•	varje del ska innehålla bild och text
-Avslutande sektion
-•	en rubrik
-•	kort text
-•	en knapp eller länk, till exempel Planera ditt besök -->
-    <div class="container"> 
+    <div class="main-container"> 
         <section class="section">
             <img src="images/hero.jpg" alt="Hero-bild Norrgläntan"> 
             <h1>Naturen väntar i Norrgläntan</h1>
@@ -107,13 +82,8 @@ Avslutande sektion
 </main> 
 
 <footer>
-    <!-- Footer
-•	logotyp och citat
-•	fiktiv kontaktinformation
-•	länkar till sidan eller relevanta sektioner -->
-
     <div class="footer-logo">
-        <img src="images/logotyp_svart.png" alt="">  
+        <img src="images/logotyp_svart.png" alt="logotyp">  
         <h3 class="logo-text">NORRGLÄNTAN</h3>
         <p class="citat">Naturupplevelser året runt.</p>
     </div>
