@@ -3,6 +3,7 @@
     box-sizing: border-box;
 }
 
+/* Generellt för hela sidan */
 body {
     background-color: #CED9C3;
     color: black;   
@@ -19,51 +20,83 @@ header {
     width: 100%;
 }
 
+/* mobilskärm */
+.header-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* strukturerar huvudinnehållet. Skapar CSS-grid-layout, lägger till padding*/
+.main-container {
+    display: grid;
+    padding: 20px;
+
+}
+
+.section {
+  text-align: center;
+  text-wrap: wrap;
+}
+
+footer  {
+    background-color: #9CA695;
+    color: rgb(0, 0, 0);
+    width: 100%;
+}
+
+/* gör att logotyp och logo-text hamnar på samma rad i headern */
 .logo-logotext {
     display: inline-flex;
     gap: 20px;
     justify-content: left;
 }
 
+/* gör att listmenyn hamnar i en kolumn (ändras vid stor skärm längre ner i filen) */
 header nav ul {
     display: flex;
     flex-direction: column;
-    margin-right: 15px;
     gap: 15px;
 }
 
+/* tar bort prickarna på alla listor på sidan */
 li {
     list-style-type: none;
 }
 
+/* stylar länkarna, gör dem svarta och tar bort linjen under dem */
 a {
     color: black;
     text-decoration: none;
 }
 
+/* Sätter annat typsnitt för Norrgläntan efter logotypen */
 .logo-text {
     font-family: Alatsi, sans-serif;
     font-size: 1.5rem;
     margin: 0;
 }
 
+/* sätter storlek på logotypen */
 img[alt="logotyp"] {
     width: 40px;
 }
 
-/* mobilskärm */
-.header-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-wrap: wrap;
-
+/* FUNKAR INTE TILL VÄNSTER : tar bort marginen på heron så den går helt ut till kanten */
+#hero {
+    width: 100%;
+    margin: -20px;
+    padding: -20px;
 }
+
+
 
 
 /* ! STOR SKÄRM ! */
 
 @media (min-width: 768px) {
+
+    /* lägger allt innehåll på en rad i headern */
     .header-container {
         flex-direction: row;
         justify-content: space-between;
@@ -71,16 +104,18 @@ img[alt="logotyp"] {
         padding-right: 20px;
     }
 
+    /* Sätter meny-länkarna i en rad istället */
     header nav ul {
         display: flex;
         flex-direction: row;
-        justify-content: flex-end;
         gap: 15px;
     }
 
+    /* Jag vill att headern ska synas även när man scrollar, men bara på stor skärm */
      header {
-        /* Jag vill att headern ska synas även när man scrollar, men bara på stor skärm */
         position: fixed;
     }
+
+    
 }
 
