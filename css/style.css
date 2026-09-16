@@ -18,6 +18,7 @@ header {
     background-color: #9CA695;
     color: rgb(12, 0, 0);
     width: 100%;
+    padding: 10px;
 }
 
 /* mobilskärm */
@@ -30,13 +31,14 @@ header {
 /* strukturerar huvudinnehållet. Skapar CSS-grid-layout, lägger till padding*/
 .main-container {
     display: grid;
-    padding: 20px;
-
 }
 
+/* inne i grid-elementen */
 .section {
   text-align: center;
   text-wrap: wrap;
+  border-bottom: 2px solid #9CA695;
+  padding-bottom: 20px;
 }
 
 footer  {
@@ -52,6 +54,11 @@ footer  {
     justify-content: left;
 }
 
+/* sätter storlek på logotypen */
+img[alt="logotyp"] {
+    width: 40px;
+}
+
 /* gör att listmenyn hamnar i en kolumn (ändras vid stor skärm längre ner i filen) */
 header nav ul {
     display: flex;
@@ -62,6 +69,22 @@ header nav ul {
 /* tar bort prickarna på alla listor på sidan */
 li {
     list-style-type: none;
+}
+
+/* sätter storlek på rubrikerna (ej cards) till samma storlek */
+h1, h2 {
+    font-size: 1.5rem;
+    margin: 10px 10px 0px 10px;
+}
+
+/* ger alla paragrafer luft runtomkring sig  */
+p {
+    padding: 5px 15px 20px 15px;
+}
+
+/* ger rubriken i cards samma position som texten */
+.activity h3 {
+    padding-left: 15px;
 }
 
 /* stylar länkarna, gör dem svarta och tar bort linjen under dem */
@@ -77,20 +100,51 @@ a {
     margin: 0;
 }
 
-/* sätter storlek på logotypen */
-img[alt="logotyp"] {
-    width: 40px;
-}
 
-/* FUNKAR INTE TILL VÄNSTER : tar bort marginen på heron så den går helt ut till kanten */
+/* fixar bredden på heron så den går helt ut till kanten */
 #hero {
     width: 100%;
-    margin: -20px;
-    padding: -20px;
 }
 
+/* Det behövdes extra utrymme under buttons */
+#section2, #section5 {
+    padding-bottom: 50px;
+}
 
+/* tar bort linjen under hero-bilden och gör att headern under hamnar närmare */
+#section1 {
+    border: none;
+    padding-bottom: 0;
+}
 
+/* skapar "cards" så att det blir fint och organiserat.  */
+.activity {
+    border: 2px solid black;
+    border-radius: 3px;
+    margin:50px;
+    background-color: #9CA695;
+    text-align: left;
+}
+
+/* Sätter bilderna i aktivitets-rutorna till max 100% av parent-elementet*/
+.activity img{
+    max-width: 100%;
+}
+
+/* skapar knapp av länkar */
+.button {
+    background-color: #9CA695;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+/* Gör kanten mycket tjockare när muspekaren markerar knappen */
+.button:hover  {
+    border: 6px solid black;
+    border-radius: 6px;
+}
 
 /* ! STOR SKÄRM ! */
 
@@ -114,6 +168,10 @@ img[alt="logotyp"] {
     /* Jag vill att headern ska synas även när man scrollar, men bara på stor skärm */
      header {
         position: fixed;
+    }
+    /* aktivitets-cards. Max-width för att de ska få plats i bredd  */
+    .activity {
+        max-width: 400px;
     }
 
     
