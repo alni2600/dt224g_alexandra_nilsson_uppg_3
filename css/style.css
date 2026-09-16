@@ -28,10 +28,7 @@ header {
     align-items: center;
 }
 
-/* strukturerar huvudinnehållet. Skapar CSS-grid-layout, lägger till padding*/
-.main-container {
-    display: grid;
-}
+
 
 /* inne i grid-elementen */
 .section {
@@ -58,6 +55,11 @@ footer  {
 img[alt="logotyp"] {
     width: 40px;
 }
+/* gör att bilderna aldrig blir större än parent-elementet och block att det inte blir "extra" space på sidorna/under */
+img {
+    display: block;
+    max-inline-size: 100%;
+}
 
 /* gör att listmenyn hamnar i en kolumn (ändras vid stor skärm längre ner i filen) */
 header nav ul {
@@ -74,12 +76,13 @@ li {
 /* sätter storlek på rubrikerna (ej cards) till samma storlek */
 h1, h2 {
     font-size: 1.5rem;
+    padding: 10px 10px 0px 10px;
     margin: 10px 10px 0px 10px;
 }
 
 /* ger alla paragrafer luft runtomkring sig  */
 p {
-    padding: 5px 15px 20px 15px;
+    padding: 15px 15px 10px 15px;
 }
 
 /* ger rubriken i cards samma position som texten */
@@ -111,7 +114,7 @@ a {
     padding-bottom: 50px;
 }
 
-/* tar bort linjen under hero-bilden och gör att headern under hamnar närmare */
+/* tar bort linjen under hero-bilden och gör att headern under den hamnar närmare */
 #section1 {
     border: none;
     padding-bottom: 0;
@@ -124,11 +127,6 @@ a {
     margin:50px;
     background-color: #9CA695;
     text-align: left;
-}
-
-/* Sätter bilderna i aktivitets-rutorna till max 100% av parent-elementet*/
-.activity img{
-    max-width: 100%;
 }
 
 /* skapar knapp av länkar */
@@ -146,9 +144,54 @@ a {
     border-radius: 6px;
 }
 
-/* ! STOR SKÄRM ! */
 
+/* strukturerar huvudinnehållet. Skapar CSS-grid-layout med två kolumner */
+.main-container {
+    display: grid;
+    
+}
+
+/* ! STOR SKÄRM ! */
 @media (min-width: 768px) {
+
+    /* strukturera innehållet/sections på stor skärm. ser till att det inte kan bli för stort och skapar två kolumner */
+    .main-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 1500px;
+        grid-template-columns: 1fr 1fr;
+        /* ser till att inte main döljs av headern (som är låst) */
+        padding-top: 80px;
+    }
+    /* lägger herobilden över hela första raden i första kolumnen, gör att den täcker hela vp */
+    #section1 {
+        grid-column: 1;
+        grid-row: 1;
+        grid-column: 1/3;
+        width: 100%;
+        height: 100%;
+    }
+
+    #section2 {
+        grid-column: 1;
+        grid-row: 1;    
+       /* tar bort en border-bottom */
+        border: none;
+        max-width: 80%;
+         /* gör texten i section2 vit så den syns mot headern */    
+         color: white;
+
+    }
+
+    .grid-col-span-2 {
+        grid-column: span 2;
+    }
+
+
+    /* aktivitets-cards. Max-width för att de ska få plats i bredd  */
+    .activity {
+        max-width: 400px;
+    }
 
     /* lägger allt innehåll på en rad i headern */
     .header-container {
@@ -169,10 +212,8 @@ a {
      header {
         position: fixed;
     }
-    /* aktivitets-cards. Max-width för att de ska få plats i bredd  */
-    .activity {
-        max-width: 400px;
-    }
+
+  
 
     
 }
