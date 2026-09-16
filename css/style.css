@@ -124,10 +124,12 @@ a {
 .activity {
     border: 2px solid black;
     border-radius: 3px;
-    margin:50px;
+    margin:10px;
     background-color: #9CA695;
     text-align: left;
-}
+      /* Max-width för att de ska få plats i bredd  */
+    max-width: 400px;
+}                                                                                                            
 
 /* skapar knapp av länkar */
 .button {
@@ -148,7 +150,6 @@ a {
 /* strukturerar huvudinnehållet. Skapar CSS-grid-layout med två kolumner */
 .main-container {
     display: grid;
-    
 }
 
 /* ! STOR SKÄRM ! */
@@ -163,6 +164,12 @@ a {
         /* ser till att inte main döljs av headern (som är låst) */
         padding-top: 80px;
     }
+
+     /* gör att de sections som ska täcka hela bredden faktiskt gör det */
+    .grid-col-span-2 {
+        grid-column: span 2;
+    }
+    
     /* lägger herobilden över hela första raden i första kolumnen, gör att den täcker hela vp */
     #section1 {
         grid-column: 1;
@@ -175,23 +182,33 @@ a {
     #section2 {
         grid-column: 1;
         grid-row: 1;    
+        max-width: 80%;
+        /* centrerar texten på höjden */
+        align-self: center;
        /* tar bort en border-bottom */
         border: none;
-        max-width: 80%;
          /* gör texten i section2 vit så den syns mot headern */    
-         color: white;
-
+         color: white;          
     }
 
-    .grid-col-span-2 {
-        grid-column: span 2;
+    /* när rubriken var för högt upp blev kontrasten inte optimal. Förbättrar det med skugga. */
+    #section2 h1 {
+        text-shadow: 2px 2px 2px black;
     }
 
+    /* skapar en grid inne i griden... vet inte om det finns en bättre lösning? */
+   #section4 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        justify-content: space-evenly;
+        
+   }
 
-    /* aktivitets-cards. Max-width för att de ska få plats i bredd  */
-    .activity {
-        max-width: 400px;
-    }
+   /* ser till att rubriken täcker hela bredden */
+   #section4 h2 {
+    grid-column: 1/4;
+    text-align: center;
+   }
 
     /* lägger allt innehåll på en rad i headern */
     .header-container {
@@ -213,7 +230,10 @@ a {
         position: fixed;
     }
 
-  
+    /* för attt den inte ska bli för liten för textstycket */
+    #hero {
+        min-height: 400px;
+    }
 
     
 }
