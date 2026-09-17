@@ -23,14 +23,14 @@ header {
     background-color: #9CA695;
     color: rgb(12, 0, 0);
     width: 100%;
-    padding: 10px;
+    padding: 0px;
 }
 
 /* mobilskärm */
 .header-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    
 }
 
 /* strukturerar huvudinnehållet. Skapar CSS-grid-layout */
@@ -38,7 +38,7 @@ header {
     display: grid;
 }
 
-/* footern i mörkare färg, på hela bredden av skärmen och gör en flexbox av child-elementen */
+/* footern i mörkare färg, på hela bredden av skärmen och gör grid-layout */
 footer  {
     background-color: #9CA695;
     color: rgb(0, 0, 0);
@@ -105,23 +105,25 @@ footer  {
 .logo-logotext {
     display: inline-flex;
     gap: 20px;
-    justify-content: left;
+    padding-left: 40px;
 }
 
 /* sätter storlek på logotypen */
-img[alt="logotyp"] {
+header img[alt="logotyp"] {
     width: 40px;
+    height: 40px;
 }
 
 /* vill att footer-logon ska vara större på liten skärm */
 footer img[alt="logotyp"] {
     width: 25%;
+    height:auto;
     min-width: 60px;
     max-width: 130px;
    
 }
 
-/* gör att bilderna aldrig blir större än parent-elementet och block att det inte blir "extra" space på sidorna/under */
+/* gör att bilderna aldrig blir större än parent-elementet och "block" att det inte blir "extra" space på sidorna/under */
 img {
     display: block;
     max-inline-size: 100%;
@@ -147,7 +149,7 @@ img {
 }
 
 /* gör att listmenyn hamnar i en kolumn (ändras vid stor skärm längre ner i filen) */
-header nav ul {
+.nav-ul {
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -240,15 +242,16 @@ a {
     .header-container {
         flex-direction: row;
         justify-content: space-between;
-        padding-left: 20px;
-        padding-right: 20px;
+        align-items: center;
     }
 
     /* Sätter meny-länkarna i en rad istället */
-    header nav ul {
+    .nav-ul  {
         display: flex;
         flex-direction: row;
         gap: 15px;
+        /* space-between i parent-elementet och logon ghar 40px padding, gör så det blir lika på båda sidor */
+        padding-right: 40px;
     }
 
     /* Jag vill att headern ska synas även när man scrollar, men bara på stor skärm */
@@ -266,7 +269,7 @@ a {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         /* ser till att inte main döljs av headern (som är låst) */
-        padding-top: 80px;
+        padding-top: 67px;
     }
 
      /* gör att de sections som ska täcka hela bredden faktiskt gör det */
