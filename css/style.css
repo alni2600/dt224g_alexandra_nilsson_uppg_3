@@ -16,7 +16,6 @@ body {
     line-height: 1.5;
     margin: 0;
     padding: 0;
-    overflow: auto;
 }
 
 /* headern i liten skärm */
@@ -50,13 +49,15 @@ footer  {
     "logo logo"
     "logotext logotext"
     "footer-contact footer-nav";
+    padding: 2rem;
+
 }
 
 /* ==================
   CLASSES / IDs
 ===================== */
 
-/* inne i grid-elementen */
+/* inne i grid-elementen i main*/
 .section {
   text-align: center;
   text-wrap: wrap;
@@ -64,11 +65,41 @@ footer  {
   padding-bottom: 20px;
 }
 
-/* Specificerar vilket element/block som ska till vilken grid-area. Detta håller i sig även på @media, men då gör jag en annan layout. */
+/* Specificerar vilket element/block som ska till vilken grid-area i footern. Detta håller i sig även på @media, men då gör jag en annan layout. */
 .footer-logotyp { grid-area: logo; }
 .footer-logo { grid-area: logotext; }
 .footer-contact { grid-area: footer-contact; }
 .footer-nav { grid-area: footer-nav; }
+
+
+/* positionerar inuti blocken för att få footern snygg. Väljer att skriva alla klasser igen för att det ska bli tydligt med grid-areas och hellre separat styling */
+.footer-logotyp { 
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    padding: 1rem;
+ }
+
+.footer-logo { 
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.footer-contact { 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: start; 
+ }
+
+.footer-nav { 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: start; 
+ }  
+
 
 /* gör att logotyp och logo-text hamnar på samma rad i headern */
 .logo-logotext {
@@ -85,7 +116,9 @@ img[alt="logotyp"] {
 /* vill att footer-logon ska vara större på liten skärm */
 footer img[alt="logotyp"] {
     width: 25%;
+    min-width: 60px;
     max-width: 130px;
+   
 }
 
 /* gör att bilderna aldrig blir större än parent-elementet och block att det inte blir "extra" space på sidorna/under */
@@ -94,6 +127,24 @@ img {
     max-inline-size: 100%;
 }
 
+/* Utan dessa rader hamnar h3 mer till vänster än listan under. Jag tror jag lyckades få rubriken att flytta med listan även när skärmstorleken ändras */
+.footer-nav h3,
+.footer-contact h3 {
+    padding-left: 2.5rem;
+    padding-top: 1rem;
+    margin: 0;
+}
+
+/* tar bort de ärvda marginalerna och padding på paragrahps så att texterna hamnar närmre varandra */
+.footer-logo p {
+    margin: 0;
+    padding: 0;
+}
+
+.footer-nav ul,
+.footer-contact ul {
+    margin: 0;
+}
 
 /* gör att listmenyn hamnar i en kolumn (ändras vid stor skärm längre ner i filen) */
 header nav ul {
@@ -268,5 +319,41 @@ a {
     "logo logotext footer-contact footer-nav";
    }
 
+    /* positionerar inuti blocken på stor skärm. Det som alltså skiljer sig från liten skärm */
+    .footer-logotyp { 
+        justify-content: right;
+    }
+
+    .footer-logo { 
+        align-items: center;
+        justify-content: center;
+    }
+
+    .footer-contact { 
+        align-items: start;
+        justify-content: center;
+    }
+
+    .footer-nav { 
+        align-items: start;
+        justify-content: center;
+    }  
+
 }
 
+
+/* =====================
+  ! pytteliten skärm ! 
+=======================*/
+/* Det är så att när sidan blir mindre än 413px blir footern "maxad" och en scrollbar i sidled öppnas. Då blir bakgrunden till både footern och headern fortfarande bara 100% av vp, alltså blir den för ljus till höger när man scrollar. Jag tänkte lösa det genom att skapa ytterligare en media quiry, med enda skillnaden att alla element i footern hamnar på en enda rad. Detta löser inte problemet till minimal skärm, men i alla fall till 280px bredd :) */
+
+@media (max-width: 413px) {
+        footer {
+        display: grid;
+        grid-template-areas: 
+        "logo" 
+        "logotext" 
+        "footer-contact" 
+        "footer-nav";
+    }
+}
